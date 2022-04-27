@@ -1,0 +1,17 @@
+function y = CxU(x,TVP,TVP_f,u,tau)
+Xf1=TVP_f(1);
+Xf2=TVP_f(2);
+q1=TVP_f(3);
+q2=TVP_f(4);
+w1=TVP_f(5);
+dt=TVP_f(6);
+Xk1=x(1);
+Xk2=x(2);
+Uk1=u(1);
+y=zeros(6,1);
+y(1)=-Xk1;
+y(2)=Xk1 - 30;
+y(3)=-Xk2;
+y(4)=Xk2 - 33;
+y(5)=- Uk1 - 5;
+y(6)=Uk1 - 5;

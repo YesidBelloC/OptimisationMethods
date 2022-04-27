@@ -1,0 +1,13 @@
+function y = f(x,TVP,TVP_f,u,tau)
+Xf1=TVP_f(1);
+Xf2=TVP_f(2);
+q1=TVP_f(3);
+q2=TVP_f(4);
+w1=TVP_f(5);
+dt=TVP_f(6);
+Xk1=x(1);
+Xk2=x(2);
+Uk1=u(1);
+y=zeros(2,1);
+y(1)=Xk2;
+y(2)=Uk1;
