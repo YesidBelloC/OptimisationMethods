@@ -1,0 +1,41 @@
+Constants
+  ro     = 1.25
+  Cd     = 0.24
+  Af     = 2.2
+  Prain  = 0.5
+  Crwet  = 0.016
+  Crdry  = 0.039
+  m      = 1500
+  g      = 9.8
+  nr     = 0.2
+  np     = 0.8
+
+Parameters
+  last
+  ang
+  u1 =0, >=0, <=2094  
+  u2 =0, >=0, <=1000
+
+Variables
+  x1 =0, >=0, <=15000
+  x2 =0, >=0, <=35
+  x3 =0, >=0, <=11664000 !11664000   Maxima potencia disponible *72v=3240 Wh*3600s=11664000Ws
+
+Intermediates
+  Cr=Crdry+(Prain*Crwet)-(Prain*Crdry)
+  Fa=0.5*ro*Cd*Af*x2^2
+  Fr=Cr*m*g*cos(ang*0.0174533)     
+  Fw=m*g*sin(ang*0.0174533)       
+  w =Fa+Fr+Fw
+
+Equations
+  $x1 = x2
+  $x2 = u1/m-u2/m-w/m
+  $x3 = (u1*x2)/np-(u2*x2)*nr
+
+  minimize (x2-20)^2
+  !u1*u2=0
+
+Connections
+  p(end).n(end).x1 = FIXED  ! or calculated
+  p(end).n(end).x1 = 15000    ! set value at the end
